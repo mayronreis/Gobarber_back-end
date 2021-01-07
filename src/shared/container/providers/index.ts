@@ -8,4 +8,5 @@ import EtherealMailProvider from './MailProvider/implementations/EtherealMailPro
 
 container.registerSingleton<IStorageProvider>('StorageProvider', DiskStorageProvider);
 
-container.registerSingleton<IMailProvider>('MailProvider', EtherealMailProvider);
+container.registerInstance<IMailProvider>('MailProvider', new EtherealMailProvider());
+
