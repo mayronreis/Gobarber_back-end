@@ -26,17 +26,23 @@ class CreateUserService {
 
     const checkUserExists = await this.usersRepository.findByEmail(email)
 
+    console.log('AQUI 001')
+
     if(checkUserExists){
       throw new AppError('Email address already used.')
     }
 
+    console.log('AQUI 002')
+
     const hashPassword = await this.hashProvider.generateHash(password)
+    console.log('AQUI 003')
 
     const user = await this.usersRepository.create({
       name,
       email,
       password: hashPassword,
-    });    
+    });
+    console.log('AQUI 004')
     return user;
   }
 }
